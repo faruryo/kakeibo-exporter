@@ -19,9 +19,6 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --target tester --tag faruryo/kakeibo-exporter-tester
 
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
       - name: pytest and cov-report
         run: docker run -v /tmp:/tmp faruryo/kakeibo-exporter-tester pytest -s --cov=kakeibo_exporter --cov-report=xml:/tmp/coverage.xml
 

@@ -1,6 +1,9 @@
 kakeibo exporter
 ################
 
+.. image:: https://codecov.io/gh/faruryo/kakeibo-exporter/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/faruryo/kakeibo-exporter
+
 環境準備
 ************
 

@@ -1,0 +1,76 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kakeibo-mysql
+spec:
+  selector:
+    app: kakeibo-mysql
+  ports:
+    - name: mysql
+      port: 3306
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kakeibo-mysql
+spec:
+  selector:
+    matchLabels:
+      app: kakeibo-mysql
+  template:
+    metadata:
+      labels:
+        app: kakeibo-mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          envFrom:
+            - configMapRef:
+                name: mysql-env
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"
+          volumeMounts:
+            - name: mysql-cnf
+              mountPath: /etc/mysql/conf.d
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-cnf
+          configMap:
+            name: mysql-cnf
+        - name: mysql-data
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-env
+data:
+  MYSQL_HOST: "kakeibo-mysql"
+  MYSQL_ROOT_PASSWORD: "kakeibo"
+  MYSQL_DATABASE: "kakeibo"
+  MYSQL_USER: "kakeibo"
+  MYSQL_PASSWORD: "kakeibo"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-cnf
+data:
+  my.cnf: |-
+    [mysqld]
+    skip_name_resolve=ON
+    performance_schema=OFF
+
+    [client]
+    loose-default-character-set=utf8mb4

@@ -1,0 +1,26 @@
+apiVersion: skaffold/v2beta2
+kind: Config
+build:
+  artifacts:
+    - image: faruryo/kakeibo-exporter
+      docker:
+        noCache: false
+        target: runner
+    - image: faruryo/kakeibo-exporter-tester
+      docker:
+        target: tester
+test:
+  - image: faruryo/kakeibo-exporter-tester
+    structureTests:
+      - "./structure-test/*"
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/job.yaml
+      - kubernetes/api.yaml
+portForward:
+  - resourceType: service
+    resourceName: kakeibo-exporter-api
+    port: 80
+    address: 0.0.0.0
+    localPort: 9000

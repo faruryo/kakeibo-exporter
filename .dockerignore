@@ -1,0 +1,28 @@
+.venv/
+__pycache__/
+
+# pytest
+.pytest_cache/
+.coverage
+
+# Distribution / packaging
+*.egg-info/
+
+# Git
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# vs code
+.vscode/
+
+# log
+*.log
+
+# サービスアカウント認証キー
+/*.json
+/*.pickle
+*secret*.yaml

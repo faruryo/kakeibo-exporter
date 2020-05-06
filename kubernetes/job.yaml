@@ -1,0 +1,40 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kakeibo-exporter
+spec:
+  template:
+    spec:
+      containers:
+        - name: kakeibo-exporter
+          image: faruryo/kakeibo-exporter
+          imagePullPolicy: Never
+          command:
+            [
+              "python",
+              "-m",
+              "kakeibo_exporter",
+              "sync-expense",
+              "106NrG6bOe3Hh3wx5iNo0_XdQ0sZuKYlJaStOHuNavAg",
+            ]
+          envFrom:
+            - configMapRef:
+                name: mysql-env
+          volumeMounts:
+            - name: google-credential
+              mountPath: "/app/credentials.json"
+              subPath: credentials.json
+              readOnly: true
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "100m"
+      volumes:
+        - name: google-credential
+          secret:
+            secretName: google-credential
+      restartPolicy: Never

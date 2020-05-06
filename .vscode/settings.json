@@ -1,0 +1,41 @@
+{
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "black",
+    "python.linting.flake8Args": [
+        "--max-line-length=88",
+        "--ignore=W293",
+    ],
+    "python.venvFolders": [
+        ".venv",
+    ],
+    "restructuredtext.confPath": "",
+    "python.pythonPath": ".venv/bin/python",
+    "python.testing.pytestEnabled": true,
+    "autoDocstring.docstringFormat": "google",
+    "cSpell.words": [
+        "creds",
+        "envvar",
+        "fastapi",
+        "httplib",
+        "isort",
+        "kakeibo",
+        "mypy",
+        "mysqlconnector",
+        "nargs",
+        "oauth",
+        "oauthlib",
+        "pytest",
+        "skaffold",
+        "spreadsheetid",
+        "sqlalchemy",
+        "typer",
+        "uvicorn",
+        "xldate"
+    ]
+}

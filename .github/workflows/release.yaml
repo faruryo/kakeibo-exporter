@@ -1,0 +1,35 @@
+name: small-test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --target tester --tag faruryo/kakeibo-exporter-tester
+
+      - name: pytest and cov-report
+        run: docker run -v /tmp:/tmp faruryo/kakeibo-exporter-tester pytest -s --cov=kakeibo_exporter --cov-report=xml:/tmp/coverage.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: /tmp/coverage.xml
+          fail_ci_if_error: true
+
+      - name: Dockerイメージをビルド&プッシュ
+        id: publish_docker
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: faruryo/kakeibo-exporter
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          snapshot: true

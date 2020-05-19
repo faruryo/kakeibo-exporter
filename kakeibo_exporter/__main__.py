@@ -15,8 +15,6 @@ from kakeibo_exporter.usecase.expense_exporter_impl import ExpenseExporterImpl
 app = typer.Typer()
 
 
-# TODO: Dockerリポジトリ作成
-# TODO: Gitリポジトリ作成
 # TODO: PyPIリポジトリ作成
 # TODO: ロガーを導入してログを吐き出す
 def getDbUrl(user: str, passwd: str, host: str, db: str) -> str:

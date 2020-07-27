@@ -14,8 +14,10 @@ kakeibo exporter
 #. GCPコンソールのIAMと管理=>サービス アカウントからサービスアカウントを作成する。ロールやユーザは紐付けなくて良い。
 #. スプレッドシートの共有からサービスアカウントのアドレスを入力して共有する。
 #. GCPコンソールのAPIとサービス=>認証情報から作成されたサービスアカウントで認証情報を作成し、credentials.jsonとしてREADME.rstと同階層に保存する。
-#. kubectl create secret generic google-credential --from-file=./credentials.json -o yaml --dry-run > kubernetes/secret.yaml
+#. kubectl create secret generic google-credential --from-file=./credentials.json -o yaml --dry-run=client > kubernetes/secret.yaml
 #. container-structure-testをインストールする
+#. 関連リソースデプロイ
+    $ kubectl apply -f kubernetes
 
 参考
 ======

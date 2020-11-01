@@ -1,5 +1,5 @@
 # poetryからpipモジュールを取り出す
-FROM python:3.8.6 as builder
+FROM python:3.9.0 as builder
 
 RUN pip install poetry==1
 
@@ -11,7 +11,7 @@ RUN poetry export -f requirements.txt -o requirements.txt
 RUN poetry export --dev -f requirements.txt -o requirements-dev.txt
 
 # 実行環境ベース
-FROM python:3.8.6 as runbase
+FROM python:3.9.0 as runbase
 
 ENV PYTHONUNBUFFERED=1
 

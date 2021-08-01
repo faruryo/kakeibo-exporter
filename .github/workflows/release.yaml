@@ -24,7 +24,7 @@ jobs:
         run: docker run -v /tmp:/tmp faruryo/kakeibo-exporter-tester pytest -s --cov=kakeibo_exporter --cov-report=xml:/tmp/coverage.xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: /tmp/coverage.xml

@@ -590,11 +590,11 @@ rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
 
 [[package]]
 name = "rope"
-version = "0.23.0"
+version = "1.1.1"
 description = "a python refactoring library..."
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = ">=3"
 
 [package.extras]
 dev = ["build", "pytest", "pytest-timeout"]
@@ -750,7 +750,7 @@ standard = ["websockets (>=10.0)", "httptools (>=0.2.0,<0.4.0)", "watchgod (>=0.
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "245f8e6bfc71de57f1d18715eabbbde6f64ced7f8993b57015897df9319fc88d"
+content-hash = "7899fee8924d95dc558fb7873d1450c7121ff6054954c7bc604ac508a33703a2"
 
 [metadata.files]
 anyio = [
@@ -1106,8 +1106,8 @@ requests-oauthlib = [
     {file = "requests_oauthlib-1.3.0-py3.7.egg", hash = "sha256:fa6c47b933f01060936d87ae9327fead68768b69c6c9ea2109c48be30f2d4dbc"},
 ]
 rope = [
-    {file = "rope-0.23.0-py3-none-any.whl", hash = "sha256:edf2ed3c9b35a8814752ffd3ea55b293c791e5087e252461de898e953cf9c146"},
-    {file = "rope-0.23.0.tar.gz", hash = "sha256:f87662c565086d660fc855cc07f37820267876634c3e9e51bddb32ff51547268"},
+    {file = "rope-1.1.1-py3-none-any.whl", hash = "sha256:216390b6342bde8ef1f27a6663554de0ea0b1fdad7c421deb3d5a3f6c5fc01e7"},
+    {file = "rope-1.1.1.tar.gz", hash = "sha256:13048ff0245a0fa187f282697a55add46e4ccf083e7670f868bdf54ee9e47f2e"},
 ]
 rsa = [
     {file = "rsa-4.0-py2.py3-none-any.whl", hash = "sha256:14ba45700ff1ec9eeb206a2ce76b32814958a98e372006c8fb76ba820211be66"},

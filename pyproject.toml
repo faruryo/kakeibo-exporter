@@ -23,7 +23,7 @@ isort = "^5.0.0"
 mypy = "^0.960"
 rope = "^0.23.0"
 pytest-mock = "^3.1.0"
-pytest-cov = "^2.8.1"
+pytest-cov = "^3.0.0"
 
 [tool.poetry.scripts]
 kex = 'kakeibo_exporter.__main__:main'
